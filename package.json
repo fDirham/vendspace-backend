@@ -1,0 +1,6 @@
+{
+  "name": "vendspace-backend",
+  "scripts": {
+    "serve": "firebase emulators:start --import ./emulator-files --export-on-exit"
+  }
+}

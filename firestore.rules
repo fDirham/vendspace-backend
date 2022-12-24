@@ -1,0 +1,13 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userHandle}/{documents=**} {
+      function isUser(){
+        return (request.auth != null && (get(/databases/$(database)/documents/users/$(userHandle)).data.uid == request.auth.uid || get(/databases/$(database)/documents/users/$(userHandle)) == null))
+      }
+
+     allow read;
+     allow write: if isUser(); 
+    }
+  }
+}
