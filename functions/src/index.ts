@@ -15,6 +15,7 @@ api.get('/', async (_, res) => {
 });
 
 api.use(`/test`, require('./routes/test'));
+api.use(`/scrape`, require('./routes/scrape'));
 
 // the name of the export is the name of the primary path
 export const v1 = functions.https.onRequest(api);
