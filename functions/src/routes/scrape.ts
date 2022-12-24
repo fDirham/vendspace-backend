@@ -43,7 +43,7 @@ router.post('/amazon', async (req, res) => {
     const { window } = dom;
     const { document } = window;
 
-    const titleEl = document.querySelector('span#title');
+    let titleEl = document.querySelector('#title');
     if (!titleEl || !titleEl.textContent)
       throw 'Scrape failed! Title not found.';
     const name = cleanScrapedTitle(titleEl.textContent);
@@ -53,7 +53,8 @@ router.post('/amazon', async (req, res) => {
     if (!priceEl || !priceEl.textContent)
       throw 'Scrape failed! Title not found.';
 
-    const price = priceEl.textContent.trim();
+    const price =
+      priceEl && priceEl.textContent ? priceEl.textContent.trim() : '';
 
     const main = document.querySelector('div#immersive-main');
     const imageSrcs: string[] = [];
