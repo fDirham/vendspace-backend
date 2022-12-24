@@ -50,9 +50,6 @@ router.post('/amazon', async (req, res) => {
 
     const priceEl = document.querySelector('span.priceToPay span.a-offscreen');
 
-    if (!priceEl || !priceEl.textContent)
-      throw 'Scrape failed! Title not found.';
-
     const price =
       priceEl && priceEl.textContent ? priceEl.textContent.trim() : '';
 
