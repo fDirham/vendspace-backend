@@ -61,7 +61,7 @@ router.post('/amazon', async (req, res) => {
         const imgTag = el.querySelector('img');
         if (imgTag) {
           const src = imgTag.getAttribute('src');
-          if (src) imageSrcs.push(src);
+          if (src && !imageSrcs.includes(src)) imageSrcs.push(src);
         }
       });
     }
